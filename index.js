@@ -26,9 +26,10 @@ class Pet {
     this.breed = breed;
   }
   sameOwner() {
-    if (petArray[1].ownerName === petArray[2].ownerName) {
+    if (petArray[0].ownerName === petArray[1].ownerName) {
       console.log("Hanno lo stesso padrone");
     } else {
+      console.log("false");
     }
   }
 }
@@ -44,6 +45,9 @@ function submitForm(event) {
 
   let animals = new Pet(petName.value, ownerName.value, species.value, breed.value);
   petArray.push(animals);
+  const ulPets = document.getElementById("Pets");
+  let li = document.querySelector("li");
+  li.innerHTML += `<li> ${petName.value} </li>  <li> ${ownerName.value} </li> <li> ${species.value} </li> <li> ${breed.value} </li> `;
   return console.log(petArray), animals.sameOwner();
 }
 form.addEventListener("submit", submitForm);
